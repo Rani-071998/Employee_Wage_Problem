@@ -1,14 +1,19 @@
 #! /bin/bash -x
  echo " Welcome to Employee Wage computation program  on master banch"
-ispresent=0
-randomcheck=$((RANDOM%2))
+is_present_full_time=1
+is_present_half_time=2
+randomcheck=$((RANDOM%3))
 empRateperHr=20
-workHr=8
-if [  $randomcheck -eq  $ispresent ]
+
+if [  $randomcheck -eq  $is_present_full_time ]
 then 
- echo "employe present"
+  empHr=8
+
+elif [ $randomcheck -eq $is_present_half_time ]
+then 
+    empHr=4
 else
-echo "employee not present"
+    empHr=0
 fi
-salary=$(( empRateperHr * wokHr ))
+salary=$(( empRateperHr * empHr ))
 echo $salary
