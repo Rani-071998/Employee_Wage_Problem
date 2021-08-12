@@ -3,7 +3,10 @@
 is_present_full_time=1
 is_present_half_time=2
 empRateperHr=20
-for ((day=1;day<=20;day++))
+totalworkingHr=0
+maxworkingdays=20
+day=1
+while [ $day -le $maxworkingdays ] 
 do 
  randomcheck=$((RANDOM%2))
 
@@ -15,7 +18,12 @@ case $randomcheck in
     *)
       empHr=o ;;
 esac
+totalworkonHr=$(( totalworkingHr + empHr ))
 salary=$(( empRateperHr * empHr ))
+echo "salary:"$salary
+((day++))
 done
-echo $salary
+totalsalary=$(( totalworkingHr * empRateperHr ))
+echo "Total salary:="$totalsalary
+
 
