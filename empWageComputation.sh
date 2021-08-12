@@ -4,14 +4,14 @@ is_present_full_time=1
 is_present_half_time=2
 randomcheck=$((RANDOM%2))
 empRateperHr=20
-case $randomcheck in
-  $is_present_full_time) 
-     empHr=8 ;;
-
-   $is_present_half_time) 
-      empHr=4 ;;
-  *) 
-      empHr=o ;;
-esac
+if [ $randomcheck -eq $is_present_full_time ] 
+then
+     empHr=8 
+elif [ $randomcheck -eq $is_present_half_time ] 
+then 
+      empHr=4 
+else
+      empHr=o 
+fi
 salary=$(( empRateperHr * empHr ))
 echo $salary
